@@ -7,7 +7,7 @@ from adafruit_requests import OutOfRetries
 from network_base import NetworkBase
 
 class NetworkFetcher(NetworkBase):
-    def __init__(self, network, secrets, wifi_state_change_cb=None, sleep_func=None, debug=False):
+    def __init__(self, network, secrets, wifi_radio_obj=None, wifi_state_change_cb=None, sleep_func=None, debug=False):
         """
         Create a NetworkFetcher object to wrap the `network` object.
         :param network: The Adafruit Network object to wrap
@@ -18,7 +18,7 @@ class NetworkFetcher(NetworkBase):
         
         self.debug = debug
         self.network = network
-        super().__init__(secrets, wifi_state_change_cb, sleep_func)
+        super().__init__(secrets, wifi_radio_obj=wifi_radio_obj, wifi_state_change_cb=wifi_state_change_cb, sleep_func=sleep_func)
         self._connect()
 
     def fetch(self, url):

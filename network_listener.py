@@ -11,7 +11,7 @@ class NetworkListener(NetworkBase):
         self.handle_data_cb = handle_data_cb
         self.listen_port = listen_port
         self.debug = debug
-        super().__init__(secrets, wifi_state_change_cb, sleep_func)
+        super().__init__(secrets, wifi_state_change_cb=wifi_state_change_cb, sleep_func=sleep_func)
 
     def run(self):
         self._connect()
